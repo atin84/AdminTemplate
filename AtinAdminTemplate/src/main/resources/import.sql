@@ -1,0 +1,55 @@
+drop table if exists city;
+drop table if exists hotel;
+
+create table city (id int primary key auto_increment, name varchar, state varchar, country varchar);
+create table hotel (city int, name varchar, address varchar, zip varchar);
+
+insert into city (name, state, country) values ('San Francisco', 'CA', 'US');
+insert into city (name, state, country) values ('Seoul', 'Seoul', 'KO');
+insert into city (name, state, country) values ('Suwon', 'Seoul', 'KO');
+insert into city (name, state, country) values ('Incheon', 'Seoul', 'KO');
+insert into city (name, state, country) values ('Anyang', 'Seoul', 'KO');
+insert into city (name, state, country) values ('Seongnam', 'Seoul', 'KO');
+insert into city (name, state, country) values ('Osan', 'Seoul', 'KO');
+insert into city (name, state, country) values ('Chuncheon', 'Gangwon', 'KO');
+insert into city (name, state, country) values ('Wonju', 'Gangwon', 'KO');
+insert into city (name, state, country) values ('Cheorwon', 'Gangwon', 'KO');
+insert into city (name, state, country) values ('Yeongwol', 'Gangwon', 'KO');
+insert into city (name, state, country) values ('Yangyang', 'Gangwon', 'KO');
+insert into city (name, state, country) values ('Sokcho', 'Gangwon', 'KO');
+insert into city (name, state, country) values ('Donghae', 'Gangwon', 'KO');
+insert into city (name, state, country) values ('Gangneung', 'Gangwon', 'KO');
+insert into city (name, state, country) values ('Daegwallyeong', 'Gangwon', 'KO');
+insert into city (name, state, country) values ('Chungju', 'Chungbuk', 'KO');
+insert into city (name, state, country) values ('Chupungnyeong', 'Chungbuk', 'KO');
+insert into city (name, state, country) values ('Cheonan', 'Chungnam', 'KO');
+insert into city (name, state, country) values ('Seosan', 'Chungnam', 'KO');
+insert into city (name, state, country) values ('Daejeon', 'Chungnam', 'KO');
+insert into city (name, state, country) values ('Geunsan', 'Chungnam', 'KO');
+insert into city (name, state, country) values ('Jeonju', 'Jeonbuk', 'KO');
+insert into city (name, state, country) values ('Iksan', 'Jeonbuk', 'KO');
+insert into city (name, state, country) values ('Mokpo', 'Jeonnam', 'KO');
+insert into city (name, state, country) values ('Haenam', 'Jeonnam', 'KO');
+insert into city (name, state, country) values ('Gwangju', 'Jeonnam', 'KO');
+insert into city (name, state, country) values ('Yeosu', 'Jeonnam', 'KO');
+insert into city (name, state, country) values ('Wan-do', 'Jeonnam', 'KO');
+insert into city (name, state, country) values ('Gimcheon', 'Gyungbuk', 'KO');
+insert into city (name, state, country) values ('Daegu', 'Gyungbuk', 'KO');
+insert into city (name, state, country) values ('Ulleung-do', 'Gyungbuk', 'KO');
+insert into city (name, state, country) values ('Waegwan', 'Gyungbuk', 'KO');
+insert into city (name, state, country) values ('Andong', 'Gyungbuk', 'KO');
+insert into city (name, state, country) values ('Pohang', 'Gyungbuk', 'KO');
+insert into city (name, state, country) values ('Uljin', 'Gyungbuk', 'KO');
+insert into city (name, state, country) values ('Jinhae', 'Gyungnam', 'KO');
+insert into city (name, state, country) values ('Busan', 'Gyungnam', 'KO');
+insert into city (name, state, country) values ('Ulsan', 'Gyungnam', 'KO');
+insert into city (name, state, country) values ('Miryang', 'Gyungnam', 'KO');
+insert into city (name, state, country) values ('Masan', 'Gyungnam', 'KO');
+insert into city (name, state, country) values ('Changwon', 'Gyungnam', 'KO');
+insert into city (name, state, country) values ('Tongyeong', 'Gyungnam', 'KO');
+insert into city (name, state, country) values ('Jinju', 'Gyungnam', 'KO');
+insert into city (name, state, country) values ('Jeju', 'Jeju', 'KO');
+insert into city (name, state, country) values ('Bukjeju', 'Gyungnam', 'KO');
+insert into city (name, state, country) values ('Seogwipo', 'Gyungnam', 'KO');
+
+insert into hotel(city, name, address, zip) values (1, 'Conrad Treasury Place', 'William & George Streets', '4001')

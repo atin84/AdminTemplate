@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sample.mybatis.mapper.CityMapper">
+    <select id="grid_selectCityById" resultType="map">
+    	SELECT 
+			A.* 
+		FROM (
+				SELECT 
+					ROWNUM RNUM, COUNTRY, STATE, ID, NAME
+				FROM 
+				(SELECT COUNTRY, STATE, ID, NAME FROM city <if test="sidx != null and sidx != ''">ORDER BY ${sidx} ${sord}</if>) C
+		) A
+		<where>
+			<if test="STARTIDX != null and STARTIDX != ''"> A.RNUM BETWEEN #{STARTIDX} AND #{ENDIDX} </if>
+		</where>
+    </select>
+    
+    <select id="count_selectCityById" resultType="long">
+    	SELECT COUNT(*) AS TOTALCNT FROM city
+    </select>
+</mapper>
