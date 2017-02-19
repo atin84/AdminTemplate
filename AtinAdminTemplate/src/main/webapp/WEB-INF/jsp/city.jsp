@@ -20,11 +20,13 @@ var gridEditPath = "${pageContext.request.contextPath}/gridEdit/";
 var language = '${currentLocaleLanguage}';
 
 $(document).ready(function() {
-	$("#jqgrid").html('<table id="grid"></table><div id="pager"></div>');
+	var dialog;
+	var lastsel;
 	
+	$("#jqgrid").html('<table id="grid"></table><div id="pager"></div>');
 	$("#grid").jqGrid({
 		url: '/grid/selectCityById.do',
-		//editurl : gridEditPath + 'wifiInfo.do',
+		editurl : '/gridedit/selectCityById.do',
 		datatype: 'json',
 			colNames:['ID',
 			          'COUNTRY',
@@ -44,9 +46,19 @@ $(document).ready(function() {
 			$("#grid").jqGrid ('setLabel', 'STATE', '', {'text-align':'left'});
 			$("#grid").jqGrid ('setLabel', 'NAME', '', {'text-align':'left'});
 		},
+		onSelectRow: function(id) {
+			dialog.dialog( "open" );
+
+			//alert(id);
+			if(id && id!==lastsel){
+				$('#grid').jqGrid('restoreRow',lastsel);
+				$('#grid').jqGrid('editRow',id,true);
+				lastsel=id;
+			}
+		},
 		pager: '#pager',
 		rowNum : 10,
-		multiselect: true,
+		multiselect: false,
 		jsonReader : {
 			root: "rows",
 			page: "page",
@@ -57,6 +69,24 @@ $(document).ready(function() {
 			id: "ID"
 		}
 	});
+	
+	dialog = $( "#dialog-form" ).dialog({
+	      autoOpen: false,
+	      height: 400,
+	      width: 350,
+	      modal: true,
+	      buttons: {
+	        //"Create an account": addUser,
+	        Cancel: function() {
+	          dialog.dialog( "close" );
+	        }
+	      },
+	      close: function() {
+	        //form[ 0 ].reset();
+	        $("#form")[0].reset();
+			//allFields.removeClass( "ui-state-error" );
+	      }
+	    });
 });
 
 </script>
@@ -67,6 +97,24 @@ $(document).ready(function() {
 		<table id="grid"></table>
 		<div id="pager"></div>
 	</div>
+
+	<div id="dialog-form" title="Create new user">
+		<p class="validateTips">All form fields are required.</p>
+	 
+		<form id="form">
+			<fieldset>
+			<label for="name">Name</label>
+			<input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+			<label for="email">Email</label>
+			<input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
 		
+			<!-- Allow form submission with keyboard without duplicating the dialog button -->
+			<input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+			</fieldset>
+		</form>
+	</div>
+
 </body>
 </html>
